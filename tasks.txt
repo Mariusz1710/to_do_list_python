@@ -1,0 +1,4 @@
+Wash the dishes STATUSto do
+Clean the bathroom STATUSto do
+Learn Python STATUSin progress
+Go shopping STATUSdone

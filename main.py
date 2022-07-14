@@ -1,20 +1,38 @@
 import os
 from colorama import Fore,Back,Style
 
-tasks = {"wash the dishes":"to do","give Misiowa her food":"to do","go shopping":"done","learn programming":"in progress"}
+tasks = {}
+
+def load_tasks_from_file():
+    try:
+        file = open("tasks.txt")
+        task_list = file.readlines()
+        #print(task_list)
+
+        for tsk in task_list:
+            t = tsk.strip("\n")
+            t = t.split("STATUS")
+            tasks[t[0]] = t[1]
+
+        print("I am printing tasks")
+        print(tasks)
+        os.system("pause")
+
+    except:
+        return
 
 def show_tasks():
     i = 1
     print("-------------------------------------------------------------------")
     for task,status in tasks.items():
         if status == "to do":
-            print(Fore.RED + str(i) + ". " + task)
+            print(Fore.RED + str(i) + ". " + task + Style.RESET_ALL)
         elif status == "done":
-            print(Fore.GREEN + str(i) + ". " + task)
+            print(Fore.GREEN + str(i) + ". " + task + Style.RESET_ALL)
         elif status == "in progress":
-            print(Fore.BLUE + str(i) + ". " + task)
+            print(Fore.BLUE + str(i) + ". " + task + Style.RESET_ALL)
         i += 1
-        print(Style.RESET_ALL)
+        
     print("-------------------------------------------------------------------")
     os.system("pause")
 
@@ -47,7 +65,14 @@ def add_task():
 
 def del_task():
     task = int(input("Enter the number of the task which you want to delete"))
-    tasks.pop(task-1)
+    i = 0
+    
+    for key in tasks:
+        if i == (task-1):
+            rem = key
+        i += 1
+    
+    tasks.pop(rem)
     print("The has been deleted")
     os.system("pause")
 
@@ -58,7 +83,7 @@ def save_tasks_to_file():
         file.write(task + "\n")
 
 choice = "-1"
-
+load_tasks_from_file()
 
 while choice != "5":
     if choice == "1":
