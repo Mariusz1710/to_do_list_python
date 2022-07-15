@@ -1,4 +1,3 @@
-Wash the dishes STATUSto do
-Clean the bathroom STATUSto do
-Learn Python STATUSin progress
+Wash the dishes STATUSin progress
+Learn Python STATUSdone
 Go shopping STATUSdone
